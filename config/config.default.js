@@ -38,6 +38,17 @@ module.exports = (appInfo) => {
     agent: false
   };
 
+  config.security = {
+    csrf: {
+      enable: false
+    },
+    domainWhiteList: ['*']
+  };
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET,POST,PUT,DELETE,HEAD'
+  };
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',

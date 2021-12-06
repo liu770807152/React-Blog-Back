@@ -24,7 +24,7 @@ class HomeController extends Controller {
     results.forEach((cur, index) => {
       cur.time = dayjs(cur.time).format('ddd, MMM D, YYYY');
     });
-    this.ctx.body = { data: results };
+    this.ctx.body = { result: results };
   }
   async getArticleById() {
     const id = this.ctx.params.id;
@@ -42,7 +42,7 @@ class HomeController extends Controller {
     results.forEach((cur, index) => {
       cur.time = dayjs(cur.time).format('ddd, MMM D, YYYY');
     });
-    this.ctx.body = { data: results };
+    this.ctx.body = { result: results };
   }
 }
 
