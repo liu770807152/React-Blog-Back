@@ -23,8 +23,7 @@ class HomeController extends Controller {
     results.forEach((cur) => {
       cur.time = dayjs(cur.time).format('ddd, MMM D, YYYY');
     });
-    console.log('articleList');
-    this.ctx.body = { result: results };
+    this.ctx.body = [...results];
   }
   async getArticleById() {
     const id = this.ctx.params.id;
@@ -41,12 +40,12 @@ class HomeController extends Controller {
     results.forEach((cur) => {
       cur.time = dayjs(cur.time).format('ddd, MMM D, YYYY');
     });
-    this.ctx.body = { result: results };
+    console.log(results);
+    this.ctx.body = results[0];
   }
   async getCatalogList() {
     const results = await this.app.mysql.select('catalog');
     this.ctx.body = [...results];
-    console.log(this.ctx.body);
   }
 }
 
