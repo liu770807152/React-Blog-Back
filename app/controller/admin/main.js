@@ -18,6 +18,24 @@ class MainController extends Controller {
       this.ctx.body = { status: 'login failure' };
     }
   }
+  async addArticle() {
+    let article = this.ctx.request.body;
+    const result = await this.app.mysql.insert('article', article);
+    const insertSuccess = result.affectedRows === 1;
+    const insertId = result.insertId;
+    this.ctx.body = {
+      succeeded: insertSuccess,
+      insertId
+    };
+  }
+  async updateArticle() {
+    let article = this.ctx.request.body;
+    const result = await this.app.mysql.update('article', article);
+    const updateSuccess = result.affectedRows === 1;
+    this.ctx.body = {
+      succeeded: updateSuccess
+    };
+  }
 }
 
 module.exports = MainController;
